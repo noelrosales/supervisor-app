@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, KeyboardAvoidingView, TextInput, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, KeyboardAvoidingView, TextInput, Image, TouchableNativeFeedback, Keyboard } from 'react-native';
 
 class LoginScreen extends React.Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class LoginScreen extends React.Component {
                 <View style={styles.logoContainer}>
                     <Image
                         style={styles.logo}
-                        source={require('../assets/icon.png')}
+                        source={require('../../assets/icon.png')}
                     />
                     <Text style={styles.title}>Supervisor App</Text>
                 </View>
@@ -39,12 +39,13 @@ class LoginScreen extends React.Component {
                             onChangeText={(text)=>this.setState({password:text})}
                         />
 
-                        <TouchableOpacity 
-                            style={styles.buttonContainer}
+                        <TouchableNativeFeedback 
                             onPress={() => this.props.login(username,password)}
                         >
-                            <Text style={styles.buttonText}>LOGIN</Text>
-                        </TouchableOpacity>
+                            <View style={styles.buttonContainer}>
+                                <Text style={styles.buttonText}>LOGIN</Text>
+                            </View>
+                        </TouchableNativeFeedback>
 
                     </View>
                 </View>
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
       alignItems: 'center',
-      flexGrow: 1,
+      height: 300,
       justifyContent: 'center'
   },
   logo: {
@@ -74,13 +75,14 @@ const styles = StyleSheet.create({
       textAlign: 'center'
   },
   form: {
-    padding: 20  
+    padding: 40  
   },
   input: {
       height: 40,
-      marginBottom: 20,
+      marginBottom: 10,
       paddingHorizontal: 10,
-      borderBottomWidth: 1
+      borderBottomWidth: 1,
+      borderBottomColor: '#666666'
   },
   buttonContainer: {
       backgroundColor: 'orange',

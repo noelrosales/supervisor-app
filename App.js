@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AppNavigator from './AppNavigator';
-import LoginScreen from './screens/LoginScreen';
+import LoginScreen from './src/screens/LoginScreen';
 
 export default class App extends React.Component {
   state = {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, FlatList, TouchableNativeFeedback } from 'react-native';
+import { Card, Icon } from 'react-native-elements';
 
 class JobsScreen extends React.Component {
     constructor(props){
@@ -64,17 +65,17 @@ class JobsScreen extends React.Component {
     renderRow = ({item}) => {
         return(
             <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Attendees')}>
-                <View style={styles.card}>
+                <Card wrapperStyle={styles.card}>
                     <View style={styles.job}>
-                        <Text style={styles.bold}>JOB ID: {item.id}</Text>
+                        <Text>JOB ID: {item.id}</Text>
                         <Text style={styles.bold}>{item.desc}</Text>
                         <Text style={styles.bold}>{item.time}</Text>
-                        <Text>{item.workers} workers</Text>
+                        <Text style={{marginTop: 10}}>{item.workers} workers</Text>
                     </View>
                     <View style={styles.icon}>
-                        <Text>></Text>
+                        <Icon name='keyboard-arrow-right' />
                     </View>
-                </View>
+                </Card>
             </TouchableNativeFeedback>
         )
     }
@@ -95,13 +96,11 @@ export default JobsScreen;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#eee'
     },
     card: {
-        flexDirection: 'row',
-        padding: 20,
-        borderBottomColor: '#aaaaaa',
-        borderBottomWidth: 1
+        flexDirection: 'row'
     },
     job: {
         flexGrow: 1,
@@ -111,7 +110,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     bold: {
-        fontWeight: '700'
+        fontWeight: '500',
+        fontSize: 18,
+        color: '#444'
     },
 
 })
