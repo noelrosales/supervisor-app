@@ -8,7 +8,8 @@ class RatingsScreen extends React.Component {
     this.state = {
       atendee: {},
       rating: 0,
-      feedback: ''
+      feedback: '',
+
     }
   }
 
@@ -26,13 +27,17 @@ class RatingsScreen extends React.Component {
   render() {
     const attendee = this.props.navigation.getParam('attendee')
     return (
-      <KeyboardAvoidingView style={styles.container}>
+      <KeyboardAvoidingView 
+        style={styles.container}
+        behavior="padding"
+      >
         <Avatar
           rounded
           size='xlarge'
           source={{uri:attendee.avatar_url}}
           containerStyle={{alignSelf:'center'}}
         />
+
         <Card>
           <Text>NRIC / IC: {attendee.ic}</Text>
           <Text style={{fontWeight: '700', marginBottom: 10, fontSize:19}}>{attendee.name}</Text>
@@ -51,16 +56,19 @@ class RatingsScreen extends React.Component {
             <Text>{attendee.schedule}</Text>
           </View>
         </Card>
+
         <AirbnbRating 
           reviews={[]} 
           onFinishRating={(rating)=> alert(rating)}
         />
+
         <TextInput
           multiline = {true}
           editable = {true}
           numberOfLines = {3}
-          style={{borderWidth: 1, borderColor: 'gray', height:75, marginVertical: 15, padding: 10}}
+          style={{borderWidth: 1, borderColor: 'gray',  marginVertical: 15}}
         />
+
         <Button
           title="SUBMIT"
           buttonStyle={{backgroundColor: 'orange'}}
@@ -76,7 +84,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    justifyContent: 'center'
   },
   bold: {
       fontWeight: '700'

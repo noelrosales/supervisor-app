@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, ActivityIndicator, KeyboardAvoidingView, TextInput, Image, TouchableNativeFeedback, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator,ScrollView, KeyboardAvoidingView, TextInput, Image, TouchableNativeFeedback, Keyboard } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 class LoginScreen extends React.Component {
     constructor(props) {
@@ -13,8 +14,11 @@ class LoginScreen extends React.Component {
       render() {
         const { username, password } = this.state;
         return (
-            <KeyboardAvoidingView behaivior="padding" style={{flex: 1}} enabled>
-                <View style={styles.logoContainer}>
+            <KeyboardAvoidingView
+              style={styles.container}
+              behavior="padding"
+            >
+              <View style={styles.logoContainer}>
                     <Image
                         style={styles.logo}
                         source={require('../../assets/icon.png')}
@@ -22,7 +26,7 @@ class LoginScreen extends React.Component {
                     <Text style={styles.title}>Supervisor App</Text>
                 </View>
 
-                <View style={styles.formContainer}>
+                <View>
                     <View style={styles.form}>
                         <TextInput 
                             placeholder='Username'
@@ -46,11 +50,10 @@ class LoginScreen extends React.Component {
                                 <Text style={styles.buttonText}>LOGIN</Text>
                             </View>
                         </TouchableNativeFeedback>
-
                     </View>
-                </View>
+                </View>    
             </KeyboardAvoidingView>
-        );
+          );
       }
 }
 
@@ -58,11 +61,12 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'center'
   },
   logoContainer: {
       alignItems: 'center',
-      height: 300,
+      height: 400,
       justifyContent: 'center'
   },
   logo: {
