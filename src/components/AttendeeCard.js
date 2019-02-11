@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableNativeFeedback } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
 import { withNavigation } from 'react-navigation';
 
 const AttendeeCard = ({attendee, navigation}) => {
     return(
-        <TouchableNativeFeedback onPress={()=>navigation.navigate('Ratings', {attendee: attendee})}>
+        <TouchableOpacity onPress={()=>navigation.navigate('Ratings', {attendee: attendee})}>
             <Card wrapperStyle={styles.card}>
                 <View style={styles.attendee}>
                     <Text>NRIC / IC: {attendee.ic}</Text>
@@ -25,7 +25,7 @@ const AttendeeCard = ({attendee, navigation}) => {
                     <Icon name='keyboard-arrow-right' />
                 </View>
             </Card>
-        </TouchableNativeFeedback>
+        </TouchableOpacity>
     )
 }
 

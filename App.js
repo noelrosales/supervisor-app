@@ -5,7 +5,7 @@ import LoginScreen from './src/screens/LoginScreen';
 
 export default class App extends React.Component {
   state = {
-    isLoggedIn: true
+    isLoggedIn: false
   }
 
   handleLogin = (username, password) => {

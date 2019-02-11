@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, FlatList, TouchableNativeFeedback } from 'react-native';
+import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
 
 class JobsScreen extends React.Component {
@@ -64,7 +64,7 @@ class JobsScreen extends React.Component {
 
     renderRow = ({item}) => {
         return(
-            <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Attendees')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Attendees')}>
                 <Card wrapperStyle={styles.card}>
                     <View style={styles.job}>
                         <Text>JOB ID: {item.id}</Text>
@@ -76,7 +76,7 @@ class JobsScreen extends React.Component {
                         <Icon name='keyboard-arrow-right' />
                     </View>
                 </Card>
-            </TouchableNativeFeedback>
+            </TouchableOpacity>
         )
     }
 

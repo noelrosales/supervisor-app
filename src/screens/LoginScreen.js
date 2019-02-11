@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ActivityIndicator,ScrollView, KeyboardAvoidingView, TextInput, Image, TouchableNativeFeedback, Keyboard } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { StyleSheet, Text, View, ActivityIndicator,ScrollView, KeyboardAvoidingView, TextInput, Image, TouchableOpacity } from 'react-native';
 
 class LoginScreen extends React.Component {
     constructor(props) {
@@ -18,40 +17,43 @@ class LoginScreen extends React.Component {
               style={styles.container}
               behavior="padding"
             >
-              <View style={styles.logoContainer}>
-                    <Image
-                        style={styles.logo}
-                        source={require('../../assets/icon.png')}
-                    />
-                    <Text style={styles.title}>Supervisor App</Text>
-                </View>
-
-                <View>
-                    <View style={styles.form}>
-                        <TextInput 
-                            placeholder='Username'
-                            returnKeyType='next'
-                            style={styles.input}
-                            onChangeText={(text)=>this.setState({username:text})}
+                <ScrollView keyboardShouldPersistTaps='handled'>
+                    <View style={styles.logoContainer}>
+                        <Image
+                            style={styles.logo}
+                            source={require('../../assets/icon.png')}
                         />
-
-                        <TextInput 
-                            placeholder='Password'
-                            returnKeyType='go'
-                            style={styles.input}
-                            secureTextEntry
-                            onChangeText={(text)=>this.setState({password:text})}
-                        />
-
-                        <TouchableNativeFeedback 
-                            onPress={() => this.props.login(username,password)}
-                        >
-                            <View style={styles.buttonContainer}>
-                                <Text style={styles.buttonText}>LOGIN</Text>
-                            </View>
-                        </TouchableNativeFeedback>
+                        <Text style={styles.title}>Supervisor App</Text>
                     </View>
-                </View>    
+
+                    <View>
+                        <View style={styles.form}>
+                            <TextInput 
+                                placeholder='Username'
+                                returnKeyType='next'
+                                style={styles.input}
+                                onChangeText={(text)=>this.setState({username:text})}
+                            />
+
+                            <TextInput 
+                                placeholder='Password'
+                                returnKeyType='go'
+                                style={styles.input}
+                                secureTextEntry
+                                onChangeText={(text)=>this.setState({password:text})}
+                            />
+
+                            <TouchableOpacity 
+                                onPress={() => this.props.login(username,password)}
+                            >
+                                <View style={styles.buttonContainer}>
+                                    <Text style={styles.buttonText}>LOGIN</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    </View>    
+
+                </ScrollView>
             </KeyboardAvoidingView>
           );
       }
